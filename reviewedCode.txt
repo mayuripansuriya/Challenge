@@ -1,0 +1,40 @@
+## Code review
+
+Please review the sample code, as if it was submitted as a PR by a junior team member.
+You are the owner of the component this functionality belongs to and are responsible for the results.
+
+- Would it be safe to go into production?
+
+No it is not safe to go into production.
+
+- Does it follow best practices?
+
+No it does not follow  best practices.
+
+- How could we verify that it's always working as intended?
+
+We can write test case to check the correct output
+
+Following points are need to be taken care for question 1 and 2
+
+	 1 => insteadOf using $providers = [$providers] statement we can pass an array from the line which calls this function  like 
+              $quote = $insurance->quote(['testProvider']) 
+         2 => we should put break after every case else the loop will not break even if the case is true and itereate through all the cases
+         3 => We should also define a default case so that if no case matches we can even do some specific code
+         4 => instead of using file_get_contents we can use curl or any 3rd party package to get data from specific url
+         5 => we should put a try catch block to handle exception
+         6 => we shoul handle error from the curl request to get notify if there is any error
+         7 => we can set a default object to the parameter directly in the method params
+         8 => One thing that is basically logical concern, as its not clear from the code what exactly price will have 
+              As per my knowledge it should be a float or int so when getting data fron the url first we need to check the content of the page and 
+              accordingly we should assign it to $prices variable 
+
+
+## Refactoring
+
+Refactor the code to meet best practices and modern coding standards.
+
+check refactoredfile.php 
+
+
+

@@ -1,0 +1,41 @@
+#/bin/bash
+
+echo "Tested bellow queries on postgres version 12.0"
+
+echo "=========================================================================="
+
+echo "1. Create database"
+psql postgres -U postgres -c "CREATE DATABASE my_test2 WITH ENCODING 'UTF8' TEMPLATE template0";
+echo "====================DB Created============================================"
+
+echo "2. Import SB schema"
+psql my_test -U postgres < postgres.bak;
+echo "====================Schema imported======================================="
+
+echo "3. Importing test data for table Authors"
+psql -U postgres -c "copy authors(id, name, country) from '/authors.csv' CSV";
+echo "====================Data imported for authors============================="
+
+echo "4. Importing test data for table Books"
+psql -U postgres -c "copy books(id, name,author,pages)) from '/books.csv' CSV";
+echo "====================Data imported for Books==============================="
+
+echo "5. Find author by name 'Leo'"
+psql -U postgres - c "SELECT name FROM authors WHERE name ILIKE 'leo%'";
+echo "====================Query one execution completed========================="
+
+echo "6. Find books of author 'Fitzgerald'"
+psql -U postgres - c "SELECT name FROM books WHERE name ILIKE '%Fitzgerald%'";
+echo "====================Query one execution completed========================="
+
+echo "6. Find authors without books"
+psql -U postgres - c "SELECT * FROM Authors LEFT JOIN Books ON Authors.name = Books.author WHERE Books.author is NULL";
+echo "====================Query one execution completed========================="
+
+echo "7. Count books per country"
+psql -U postgres - c "SELECT COUNT(Books.author), Authors.country FROM Authors LEFT JOIN Books ON Authors.name = Books.author GROUP BY Authors.country";
+echo "====================Query one execution completed========================="
+
+echo "8. Count average book length (in pages) per author"
+psql -U postgres - c "SELECT AVG(Books.pages), Authors.name FROM Authors LEFT JOIN Books ON Authors.name = Books.author GROUP BY Authors.name";
+echo "====================Query one execution completed========================="
