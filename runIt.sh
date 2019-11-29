@@ -23,11 +23,11 @@ psql -U postgres -c "copy books(id, name,author,pages)) from '/books.csv' CSV";
 echo "====================Data imported for Books==============================="
 
 echo "5. Find author by name 'Leo'"
-psql -U postgres - c "SELECT name FROM authors WHERE name ILIKE 'leo%'";
+psql -U postgres - c "SELECT * FROM authors WHERE name ILIKE 'leo%'";
 echo "====================Query 1 execution completed========================="
 
 echo "6. Find books of author 'Fitzgerald'"
-psql -U postgres - c "SELECT name FROM books WHERE name ILIKE '%Fitzgerald%'";
+psql -U postgres - c "SELECT * FROM books WHERE author ILIKE '%Fitzgerald%'";
 echo "====================Query 2 execution completed========================="
 
 echo "6. Find authors without books"
