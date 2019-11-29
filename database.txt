@@ -1,0 +1,33 @@
+-As of now according to your given schema I have created the queries
+But I have some suggestions
+
+-We should use author_id as foreign_key in books table instead of name, So that it can be uniquely 
+identified and also execution will be faster.
+
+For Time complexity
+
+We can do indexing to reduce the execution time
+We should include some other fields to Author table to make each row  uniquely identified
+
+
+Following are the queries for the task
+
+- Find author by name "Leo"
+--SELECT name FROM authors WHERE name ILIKE 'leo%';
+
+- Find books of author "Fitzgerald"
+--SELECT name FROM books WHERE name ILIKE '%Fitzgerald%';
+
+- Find authors without books
+--SELECT * FROM Authors LEFT JOIN Books ON Authors.name = Books.author WHERE Books.author is NULL;
+
+- Count books per country
+--SELECT COUNT(Books.author), Authors.country FROM Authors LEFT JOIN Books ON Authors.name = Books.author GROUP BY Authors.country
+
+- Count average book length (in pages) per author
+--SELECT AVG(Books.pages), Authors.name FROM Authors LEFT JOIN Books ON Authors.name = Books.author GROUP BY Authors.name
+
+
+
+
+

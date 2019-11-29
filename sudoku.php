@@ -61,6 +61,9 @@ class checkCompleteValidSudoku
  
  
 $obj = new checkCompleteValidSudoku();
+
+//we can also pass the input from commandline as well but as the matrix 
+//is quite big I have used as a static matrix 
 //define input
 $input =  array(
     array(1, 8, 2, 5, 4, 3, 6, 9, 7), //1

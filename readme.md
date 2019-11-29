@@ -6,6 +6,8 @@ then move to folder Challenge
 
   - run the shellscript runit.sh >> sh runit.sh
   - If you are not able to run the script Go to the file and run all the commands one by one
+  - for some suggestion you can check 
+  > databse.txt
   
  ### Task 2 (code review)
 
