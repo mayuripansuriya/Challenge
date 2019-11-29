@@ -22,3 +22,6 @@ then move to folder Challenge
   >sudoku.php
  - You can run the file by running in terminal
  ``` php sudoku.php```
+ 
+ - For thought process behind the logic please check 
+ > sudokutask.txt
