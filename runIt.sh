@@ -11,7 +11,7 @@ psql postgres -U postgres -c "CREATE DATABASE my_test2 WITH ENCODING 'UTF8' TEMP
 echo "====================DB Created============================================"
 
 echo "2. Import SB schema"
-psql my_test -U postgres < postgres.bak;
+psql my_test -U postgres < db.bak;
 echo "====================Schema imported======================================="
 
 echo "3. Importing test data for table authors"
