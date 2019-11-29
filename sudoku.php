@@ -16,20 +16,20 @@ class checkCompleteValidSudoku
          
         //check all rows for duplicate values
         // any duplicate value in any row will fail validation
-        for($raw = 0 ; $raw < 9 ; $raw++){
+        for($row = 0 ; $row < 9 ; $row++){
             $duplicateInRows = [];
             $duplicateInCols = [];
             for($col = 0 ; $col < 9 ; $col++){
-                if(!in_array($this->sudoku[$raw][$col], $checkNumbers))
+                if(!in_array($this->sudoku[$row][$col], $checkNumbers))
                     return false;
                 else {
-                    if(!in_array($this->sudoku[$raw][$col], $duplicateInRows)){
-                        array_push($duplicateInRows, $this->sudoku[$raw][$col]);
+                    if(!in_array($this->sudoku[$row][$col], $duplicateInRows)){
+                        array_push($duplicateInRows, $this->sudoku[$row][$col]);
                     } else {
                          return false;
                     }
-                    if(!in_array($this->sudoku[$col][$raw], $duplicateInCols)){
-                        array_push($duplicateInCols, $this->sudoku[$col][$raw]);
+                    if(!in_array($this->sudoku[$col][$row], $duplicateInCols)){
+                        array_push($duplicateInCols, $this->sudoku[$col][$row]);
                     } else {
                         return false;
                     }
@@ -39,10 +39,10 @@ class checkCompleteValidSudoku
             $boxNumbers = [];
         
             //check for correct 3 * 3 matrix
-            $verticalStart = 3 * floor($raw / 3);
+            $verticalStart = 3 * floor($row / 3);
             $verticalEnd = $verticalStart + 3;
             while($verticalStart < $verticalEnd) {
-                $horizontalStart = 3 * ($raw % 3);
+                $horizontalStart = 3 * ($row % 3);
                 $horizontalEnd = $horizontalStart + 3;
                 while($horizontalStart < $horizontalEnd) {
                     if(!in_array($this->sudoku[$verticalStart][$horizontalStart], $boxNumbers)){

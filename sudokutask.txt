@@ -1,0 +1,25 @@
+I took around 1.5 hour to complete this task
+
+Though process behind the logic 
+
+
+I first focussed on validating the rows and columns, So first bunch of code does that thing
+
+In that What I did is first created a blank array one for row and one for column 
+I first checked if the item being parsed is falling between 1 to 9 if not then from there itself
+I have returned false
+
+then I have checked for duplicate values so I have pushed easch element from row to row array and 
+column to column array and compared it with previous array. If it already exists then I have
+invalidated the the input
+
+The second bunch of code is for cheking valididty of 3*3 matrix
+
+For that I have divided the whole matrix into 9 differnt matrix
+For doing that I have looped through vertically and taken each row as multiple of 3
+
+And followed the same process as I did in row and column to validate for the duplidate value in 
+the matrix. 
+I have not check for 1-9 as its already being check in first section.
+
+I can Explain more about logic verbally.
