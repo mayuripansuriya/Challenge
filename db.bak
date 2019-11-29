@@ -57,25 +57,23 @@ ALTER SEQUENCE public.books_id_seq OWNED BY public.books.id;
 
 
 --
--- Name: persons; Type: TABLE; Schema: public; Owner: postgres
+-- Name: authors; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.persons (
+CREATE TABLE public.authors (
     id integer NOT NULL,
-    first_name character varying(50),
-    last_name character varying(50),
-    dob date,
-    email character varying(255)
+    name character varying(50),
+    country character varying(50)
 );
 
 
-ALTER TABLE public.persons OWNER TO postgres;
+ALTER TABLE public.authors OWNER TO postgres;
 
 --
--- Name: persons_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: authors_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.persons_id_seq
+CREATE SEQUENCE public.authors_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -84,13 +82,13 @@ CREATE SEQUENCE public.persons_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.persons_id_seq OWNER TO postgres;
+ALTER TABLE public.authors_id_seq OWNER TO postgres;
 
 --
--- Name: persons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: authors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.persons_id_seq OWNED BY public.persons.id;
+ALTER SEQUENCE public.authors_id_seq OWNED BY public.persons.id;
 
 
 --
@@ -101,10 +99,10 @@ ALTER TABLE ONLY public.books ALTER COLUMN id SET DEFAULT nextval('public.books_
 
 
 --
--- Name: persons id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: authors id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.persons ALTER COLUMN id SET DEFAULT nextval('public.persons_id_seq'::regclass);
+ALTER TABLE ONLY public.authors ALTER COLUMN id SET DEFAULT nextval('public.authors_id_seq'::regclass);
 
 
 --
@@ -116,10 +114,10 @@ COPY public.books (id, name, author, pages) FROM stdin;
 
 
 --
--- Data for Name: persons; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: authors; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.persons (id, first_name, last_name, dob, email) FROM stdin;
+COPY public.authors (id, name, country) FROM stdin;
 \.
 
 
@@ -131,10 +129,10 @@ SELECT pg_catalog.setval('public.books_id_seq', 1, false);
 
 
 --
--- Name: persons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: authors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.persons_id_seq', 1, false);
+SELECT pg_catalog.setval('public.authors_id_seq', 1, false);
 
 
 --
@@ -146,11 +144,11 @@ ALTER TABLE ONLY public.books
 
 
 --
--- Name: persons persons_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: authors authors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.persons
-    ADD CONSTRAINT persons_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.authors
+    ADD CONSTRAINT authors_pkey PRIMARY KEY (id);
 
 
 --
