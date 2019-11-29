@@ -14,7 +14,7 @@ echo "2. Import SB schema"
 psql my_test -U postgres < postgres.bak;
 echo "====================Schema imported======================================="
 
-echo "3. Importing test data for table Authors"
+echo "3. Importing test data for table authors"
 psql -U postgres -c "copy authors(id, name, country) from '/authors.csv' CSV";
 echo "====================Data imported for authors============================="
 
@@ -31,13 +31,13 @@ psql -U postgres - c "SELECT name FROM books WHERE name ILIKE '%Fitzgerald%'";
 echo "====================Query 2 execution completed========================="
 
 echo "6. Find authors without books"
-psql -U postgres - c "SELECT * FROM Authors LEFT JOIN Books ON Authors.name = Books.author WHERE Books.author is NULL";
+psql -U postgres - c "SELECT * FROM authors LEFT JOIN books ON authors.name = books.author WHERE books.author is NULL";
 echo "====================Query 3 execution completed========================="
 
 echo "7. Count books per country"
-psql -U postgres - c "SELECT COUNT(Books.author), Authors.country FROM Authors LEFT JOIN Books ON Authors.name = Books.author GROUP BY Authors.country";
+psql -U postgres - c "SELECT COUNT(books.author), authors.country FROM authors LEFT JOIN books ON authors.name = books.author GROUP BY authors.country";
 echo "====================Query 4 execution completed========================="
 
 echo "8. Count average book length (in pages) per author"
-psql -U postgres - c "SELECT AVG(Books.pages), Authors.name FROM Authors LEFT JOIN Books ON Authors.name = Books.author GROUP BY Authors.name";
+psql -U postgres - c "SELECT AVG(books.pages), authors.name FROM authors LEFT JOIN books ON authors.name = books.author GROUP BY authors.name";
 echo "====================Query 5 execution completed========================="
